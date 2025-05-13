@@ -1,5 +1,13 @@
 # ParagonR
 
+### Description
+
+This is a demo of an application using Firebase and Vertex AI to scan recipes and convert the images to editable forms. This way you can track your spending by just taking a photo of your bill.
+
+**Note**: This app was tested mostly on Polish style recipes
+
+### Demo: [https://paragon-r.web.app](https://paragon-r.web.app)
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
 
 ## Development server
@@ -12,48 +20,12 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+### Firebase
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+To make app working correctly on your machine you will need to setup firebase project. Since it is using `@angular/fire` visit docs for more information.
 
-```bash
-ng generate component component-name
-```
+[https://www.npmjs.com/package/@angular/fire](https://www.npmjs.com/package/@angular/fire)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+firebase app config is should be store in `src/environments/environment.ts`
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+**Important** Firebase project need to have enable VertexAI and Storage to work correctly.

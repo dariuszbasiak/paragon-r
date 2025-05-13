@@ -1,0 +1,14 @@
+.list-item {
+  margin-bottom: 12px;
+}
+
+table {
+  width: 100%;
+  td,
+  th {
+    text-align: right;
+    &:first-child {
+      text-align: left;
+    }
+  }
+}

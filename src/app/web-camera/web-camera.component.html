@@ -1,0 +1,32 @@
+<div class="camera-container">
+  <video
+    #videoElement
+    autoplay
+    playsinline
+    [hidden]="!isCameraReady || !!cameraError"
+  ></video>
+  <canvas #canvasElement style="display: none"></canvas>
+
+  <button
+    mat-fab
+    color="primary"
+    (click)="cameraButtonHandler()"
+    [disabled]="!isCameraReady || !!cameraError"
+    class="capture-button"
+    aria-label="Capture image"
+  >
+    @if(!isImageFreeze) {
+    <mat-icon>camera_alt</mat-icon>
+    } @else {
+    <mat-icon>cancel</mat-icon>
+    }
+  </button>
+
+  @if (isImageFreeze) {
+  <img
+    [src]="base64image"
+    alt="Captured Image"
+    class="captured-image-preview"
+  />
+  }
+</div>

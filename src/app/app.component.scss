@@ -1,0 +1,12 @@
+main {
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+.floating-button {
+  position: fixed;
+  right: 45px;
+  bottom: 45px;
+  z-index: 1000;
+}

@@ -1,0 +1,39 @@
+<div class="sumarization">
+  <h3>Total spends: {{ countTotal() }}</h3>
+</div>
+
+@for(item of data ; track item.uuid) {
+<div class="list-item">
+  <mat-accordion>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title> {{ item.seller.name }}</mat-panel-title>
+        <mat-panel-description>
+          Total: {{ item.seller.total }}, Date {{ item.date }}
+          <button mat-icon-button (click)="removeRecipe(item.uuid ?? '')">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <table>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+        </tr>
+
+        @for( product of item.items; track $index) {
+        <tr>
+          <td>{{ product.name }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>{{ product.total }}</td>
+        </tr>
+        }
+      </table>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+}

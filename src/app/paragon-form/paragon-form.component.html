@@ -1,0 +1,113 @@
+<mat-card class="card">
+  <mat-card-header>New Recipe</mat-card-header>
+  <mat-card-content>
+    <form class="form" [formGroup]="form">
+      @if(form.controls.seller) {
+
+      <div class="seller">
+        <h3>Seller</h3>
+        <mat-form-field class="seller--name" appearance="outline">
+          <mat-label>Seller Name</mat-label>
+          <input
+            type="text"
+            matInput
+            [formControl]="form.controls.seller.controls.name"
+            placeholder="Seller Name"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="seller--name" appearance="outline">
+          <mat-label>Seller Name</mat-label>
+          <input
+            type="text"
+            matInput
+            [formControl]="form.controls.seller.controls.taxNumber"
+            placeholder="Seller Text Number"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            [formControl]="form.controls.date"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="items-table-container">
+        <h3>Items</h3>
+        @for (itemControl of form.controls.items.controls; track $index) {
+
+        <div class="item">
+          <div class="item--name">
+            <mat-form-field class="item-input--name" appearance="outline">
+              <mat-label>Product name</mat-label>
+              <input
+                type="text"
+                matInput
+                [formControl]="itemControl.controls.name"
+                name="item-{{ $index }}"
+                appearance="outlined"
+              />
+            </mat-form-field>
+          </div>
+          <div class="item--values">
+            <mat-form-field class="item-input--price" appearance="outline">
+              <mat-label>Price</mat-label>
+              <input
+                type="number"
+                matInput
+                name="item-{{ $index }}"
+                [formControl]="itemControl.controls.price"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="item-input--quantity" appearance="outline">
+              <mat-label>Quantity</mat-label>
+              <input
+                type="number"
+                matInput
+                [formControl]="itemControl.controls.quantity"
+                name="item-{{ $index }}"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="item-input--quantity" appearance="outline">
+              <mat-label>Total</mat-label>
+              <input
+                type="number"
+                matInput
+                [formControl]="itemControl.controls.total"
+                name="item-{{ $index }}"
+              />
+            </mat-form-field>
+            <button mat-fab (click)="removeItem($index)" color="warn">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+        }
+      </div>
+
+      }
+      <h3>Total</h3>
+      <mat-form-field class="total" appearance="outline">
+        <mat-label>Total</mat-label>
+        <input
+          type="number"
+          matInput
+          [formControl]="form.controls.seller.controls.total"
+          placeholder="Total"
+        />
+      </mat-form-field>
+    </form>
+    <mat-card-actions>
+      <button mat-stroked-button (click)="save()">Save</button>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>

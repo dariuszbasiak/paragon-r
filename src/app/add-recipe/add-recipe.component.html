@@ -1,0 +1,7 @@
+<div class="add-recipe">
+  <app-web-camera (onUploadComplete)="updateImage($event)" />
+  <app-image-upload (onUploadComplete)="updateImage($event)" />
+  @if(uploadResponse) {
+  <app-paragon-form [data]="uploadResponse"></app-paragon-form>
+  }
+</div>

@@ -1,0 +1,16 @@
+<div class="image-input">
+  <label for="fileInput">Choose Image:</label>
+  <input
+    id="fileInput"
+    type="file"
+    accept="image/*"
+    #fileInput
+    (change)="onFileSelected($event)"
+  />
+</div>
+
+<div class="button-container">
+  <button mat-flat-button (click)="fileInput.click()">
+    Upload Image <mat-icon>upload</mat-icon>
+  </button>
+</div>
