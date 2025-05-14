@@ -5,7 +5,7 @@ export interface Item {
   total: number;
 }
 
-export interface Recipe {
+export interface Receipt {
   uuid?: string; // Added for unique identification
   date?: string;
   seller: {

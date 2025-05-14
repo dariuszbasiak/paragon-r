@@ -6,7 +6,7 @@ import {
   FormGroup,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { Recipe } from '../models/recipe.interface';
+import { Receipt } from '../models/receipt.interface';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
@@ -37,7 +37,7 @@ export class ParagonFormComponent {
   router = inject(Router);
   fb = inject(FormBuilder);
 
-  @Input() data: Recipe | null = null;
+  @Input() data: Receipt | null = null;
 
   form = new FormGroup({
     date: new FormControl(''),
@@ -63,7 +63,7 @@ export class ParagonFormComponent {
     }
   }
 
-  createFrom(data: Recipe): FormGroup {
+  createFrom(data: Receipt): FormGroup {
     return this.fb.group({
       date: [data.date],
       seller: this.fb.group({
@@ -85,8 +85,8 @@ export class ParagonFormComponent {
   }
 
   save() {
-    this.dbService.saveItem(this.form.value as Recipe);
-    this.router.navigate(['/my-recipes']);
+    this.dbService.saveItem(this.form.value as Receipt);
+    this.router.navigate(['/my-receipts']);
   }
 
   removeItem(index: number) {

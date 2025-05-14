@@ -10,7 +10,7 @@
         <mat-panel-title> {{ item.seller.name }}</mat-panel-title>
         <mat-panel-description>
           Total: {{ item.seller.total }}, Date {{ item.date }}
-          <button mat-icon-button (click)="removeRecipe(item.uuid ?? '')">
+          <button mat-icon-button (click)="removeReceipt(item.uuid ?? '')">
             <mat-icon>delete</mat-icon>
           </button>
         </mat-panel-description>

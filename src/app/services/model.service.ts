@@ -5,7 +5,7 @@ import {
   getGenerativeModel,
   GenerativeModel,
 } from '@angular/fire/vertexai';
-import { Recipe } from '../models/recipe.interface';
+import { Receipt } from '../models/receipt.interface';
 import { NotificationService } from './notification.service';
 import { LoadingService } from './loading.service';
 @Injectable({
@@ -16,7 +16,7 @@ export class ModelService {
   loadingService = inject(LoadingService);
   notificationService = inject(NotificationService);
   model: GenerativeModel | null = null;
-  recipe: Recipe | null = null;
+  receipt: Receipt | null = null;
   instruction = `
     From the give image of receipt extract data and return JSON with given scheme: 
       {
@@ -47,7 +47,7 @@ export class ModelService {
     });
   }
 
-  async sendMessage(data: string, mimeType: string): Promise<Recipe | null> {
+  async sendMessage(data: string, mimeType: string): Promise<Receipt | null> {
     this.loadingService.show();
 
     try {
@@ -64,22 +64,22 @@ export class ModelService {
       ]);
 
       if (res) {
-        const recipe = this.cleanJsonStringForParsing(
+        const receipt = this.cleanJsonStringForParsing(
           res?.response.text() ?? ''
         );
 
         //@ts-ignore
-        recipe.uuid = res?.responseId ?? crypto.randomUUID();
-        this.recipe = recipe;
+        receipt.uuid = res?.responseId ?? crypto.randomUUID();
+        this.receipt = receipt;
 
-        return this.recipe;
+        return this.receipt;
       } else {
         this.notificationService.showError(
           `Error processing image - make sure you send picture of receipt!`
         );
       }
     } catch (error) {
-      console.error('Error getting recipe from image:', error);
+      console.error('Error getting receipt from image:', error);
 
       this.notificationService.showError(
         `Error processing image - make sure you send picture of receipt!`
@@ -88,7 +88,7 @@ export class ModelService {
       return null;
     } finally {
       this.loadingService.hide();
-      return this.recipe;
+      return this.receipt;
     }
   }
 

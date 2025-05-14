@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Recipe } from '../models/recipe.interface';
+import { Receipt } from '../models/receipt.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DbService {
-  data: Recipe[] = [];
+  data: Receipt[] = [];
 
   constructor() {
     this.data = this.getData();
   }
 
-  getData(): Recipe[] {
+  getData(): Receipt[] {
     const data = localStorage.getItem('paragon-r') ?? '';
     if (!data) {
       return [];
@@ -22,12 +22,12 @@ export class DbService {
         return parsed;
       }
     } catch (e) {
-      console.error('Error parsing recipes from localStorage', e);
+      console.error('Error parsing receipts from localStorage', e);
     }
     return [];
   }
 
-  saveItem(value: Recipe) {
+  saveItem(value: Receipt) {
     if (!value.uuid) {
       value.uuid = crypto.randomUUID(); // Generate UUID if not present
     }
@@ -35,7 +35,7 @@ export class DbService {
     localStorage.setItem('paragon-r', JSON.stringify(this.data));
   }
 
-  updateItem(value: Recipe) {
+  updateItem(value: Receipt) {
     if (!value.uuid) {
       console.error('Cannot update item without UUID', value);
       return;

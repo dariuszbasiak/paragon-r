@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/browser/paragon-r",
+    "public": "dist/paragon-r/browser",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {

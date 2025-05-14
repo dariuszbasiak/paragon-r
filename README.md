@@ -2,9 +2,9 @@
 
 ### Description
 
-This is a demo of an application using Firebase and Vertex AI to scan recipes and convert the images to editable forms. This way you can track your spending by just taking a photo of your bill.
+This is a demo of an application using Firebase and Vertex AI to scan receipts and convert the images to editable forms. This way you can track your spending by just taking a photo of your bill.
 
-**Note**: This app was tested mostly on Polish style recipes
+**Note**: This app was tested mostly on Polish style receipts. Still it can be use for any other receipts with good results.
 
 ### Demo: [https://paragon-r.web.app](https://paragon-r.web.app)
 

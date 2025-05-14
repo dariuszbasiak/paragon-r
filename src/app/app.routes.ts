@@ -1,15 +1,15 @@
 import { Routes } from '@angular/router';
-import { MyRecipesComponent } from './my-recipes/my-recipes.component';
-import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+import { MyReceiptsComponent } from './my-receipts/my-receipts.component';
+import { AddReceiptComponent } from './add-receipt/add-receipt.component';
 
 export const routes: Routes = [
   {
-    path: 'my-recipes',
-    component: MyRecipesComponent,
+    path: 'my-receipts',
+    component: MyReceiptsComponent,
   },
   {
     path: '',
-    component: AddRecipeComponent,
+    component: AddReceiptComponent,
     pathMatch: 'full',
   },
   { path: '**', redirectTo: '' },

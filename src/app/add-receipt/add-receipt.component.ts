@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { WebCameraComponent } from '../web-camera/web-camera.component';
 import { ImageUploadComponent } from '../image-upload/image-upload.component';
-import { Recipe } from '../models/recipe.interface';
+import { Receipt } from '../models/receipt.interface';
 import { LoadingService } from '../services/loading.service';
 import { ModelService } from '../services/model.service';
 import { NotificationService } from '../services/notification.service';
@@ -9,17 +9,17 @@ import { ParagonFormComponent } from '../paragon-form/paragon-form.component';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-add-recipe',
+  selector: 'app-add-receipt',
   imports: [
     WebCameraComponent,
     ImageUploadComponent,
     ParagonFormComponent,
     WebCameraComponent,
   ],
-  templateUrl: './add-recipe.component.html',
-  styleUrl: './add-recipe.component.scss',
+  templateUrl: './add-receipt.component.html',
+  styleUrl: './add-receipt.component.scss',
 })
-export class AddRecipeComponent implements OnInit {
+export class AddReceiptComponent implements OnInit {
   modelService = inject(ModelService);
   loadingService = inject(LoadingService);
   notificationService = inject(NotificationService);
@@ -31,7 +31,7 @@ export class AddRecipeComponent implements OnInit {
   }
 
   base64image: string | null = null;
-  uploadResponse: Recipe | null = null;
+  uploadResponse: Receipt | null = null;
 
   async updateImage(event: { data: string; mimeType: string }) {
     this.base64image = event.data;

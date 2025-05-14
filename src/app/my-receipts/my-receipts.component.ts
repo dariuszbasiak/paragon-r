@@ -1,23 +1,23 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { DbService } from '../services/db.service';
-import { Recipe } from '../models/recipe.interface';
+import { Receipt } from '../models/receipt.interface';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-my-recipes',
+  selector: 'app-my-receipts',
   imports: [MatExpansionModule, MatButtonModule, MatIconModule],
-  templateUrl: './my-recipes.component.html',
-  styleUrl: './my-recipes.component.scss',
+  templateUrl: './my-receipts.component.html',
+  styleUrl: './my-receipt.component.scss',
 })
-export class MyRecipesComponent implements OnInit {
+export class MyReceiptsComponent implements OnInit {
   dbService = inject(DbService);
   titleService = inject(Title);
 
-  title = 'ParagonR - My Recipes';
-  data: Recipe[] = [];
+  title = 'ParagonR - My Receipts';
+  data: Receipt[] = [];
 
   ngOnInit() {
     this.data = this.dbService.getData();
@@ -25,10 +25,12 @@ export class MyRecipesComponent implements OnInit {
   }
 
   countTotal() {
-    return this.data.reduce((acc, item) => acc + item.seller.total, 0);
+    return this.data
+      .reduce((acc, item) => acc + item.seller.total, 0)
+      .toFixed(2);
   }
 
-  removeRecipe(uuid: string) {
+  removeReceipt(uuid: string) {
     this.dbService.removeItem(uuid);
     this.data = this.dbService.getData();
   }
